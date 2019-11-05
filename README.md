@@ -103,7 +103,11 @@ charlesFromJupiter.homePlanet = "Jupiter"
 
 What will the value of `charles.homePlanet` be after the above code run? What about the value of `charlesFromJupiter.homePlanet`? Why?
 
+```
+charlesFromJupiter is its own instance meaning you'd have to call it specifically, when you call on the value  of charles.homePlanet, you are calling from the charles instance, not the charlesFromJupiter insance.
 
+PS: will need help explaining this better. it was confusing to iterate.
+```
 ## Question 5
 
 Here's a struct that represents a bank account:
@@ -125,7 +129,27 @@ struct BankAccount {
 
 Does this code work? Why or why not?
 
+```
+No because we are messing with the original information
+```
+
 Fix the `BankAccount` struct so it does work.
+
+```
+struct BankAccount {
+ var owner: String
+ var balance: Double
+
+ mutating func deposit(_ amount: Double) {
+ balance += amount
+ }
+
+ mutating func withdraw(_ amount: Double) {
+ balance -= amount
+ }
+}
+
+```
 
 Given the code below (which should incorporate any fixes you made):
 
@@ -137,6 +161,10 @@ joeAccount.withdraw(50.0)
 
 What will the value of `joeAccount.balance` be after the above code runs? What about the value of `joeOtherAccount.balance`? Why?
 
+```
+the value of joeAccount.balance decreases because we "withdrew" from that specific value.
+joeOtherAccount is still its own value so it is not changed.
+```
 
 ## Question 6
 
