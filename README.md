@@ -24,10 +24,30 @@ fred.name = "Brick"
 fred.weight = 999.2
 fred.homePlanet = "Mars"
 ```
-
+```
+The code will not run because the homePlanet is a constant, not a let so it can't be run.
+```
 Fix the class definition for `Giant` in the space below so that it **does** work:
 
+```swift
+class Giant {
+ var name: String = "Fred"
+ var weight: Double = 340.0
+ var homePlanet: String = "Earth"
+    
+    func info() {
+        print("\(name) weights \(weight) and is from \(homePlanet)")
+    }
+}
 
+let fred = Giant()
+
+fred.name = "Brick"
+fred.weight = 999.2
+fred.homePlanet = "Mars"
+fred.info()
+
+```
 ## Question 2
 
 Take a look at this struct that represents an alien:
@@ -43,6 +63,8 @@ let bilbo = Alien(name: "Bilbo", height: 1.67, homePlanet: "Venus")
 
 Will these three lines of code run? If so, why not?
 
+No, because bilbo is a constant so it cannot be changed.
+
 ```swift
 bilbo.name = "Jake"
 bilbo.height = 1.42
@@ -51,7 +73,9 @@ bilbo.homePlanet = "Saturn"
 
 Change the declaration of `bilbo` so that the above three lines of code **do** work:
 
-
+```
+var bilbo = Alien(name: "Bilbo", height: 1.67, homePlanet: "Venus")
+```
 ## Question 3
 
 Consider this bit of code that uses the `Giant` class:
@@ -65,6 +89,7 @@ jason.name = "Jason"
 
 What will the value of `edgar.name` be after those three lines of code are run? What will the value of `jason.name` be? Why?
 
+Jason and Edgar pointing to the same object indicate that they would both end up being Jason.
 
 ## Question 4
 
