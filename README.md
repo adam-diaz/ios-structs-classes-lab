@@ -173,6 +173,25 @@ a. Write a struct called `Person` that has 3 properties of type `String`: a firs
 
 b. Write a method in `Person` called `fullName` that will return a formatted string of an instance's full name. Call this method on both the instances you created in part a.
 
+```
+struct Person {
+var firstName: String
+var lastName: String
+var middleName: String?
+
+func fullName() {
+    print("This is \(firstName), their middle name is \(middleName ?? "Non-Existent"), their last name is \(lastName)")
+}
+}
+
+let personOne = Person(firstName: "Beyoncé", lastName: "Knowles", middleName: "Giselle")
+
+let personTwo = Person(firstName: "Cowboy", lastName: "Bebop")
+
+personOne.fullName()
+personTwo.fullName()
+
+```
 
 ## Question 7
 
