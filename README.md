@@ -240,7 +240,38 @@ bookTwo.isGood(rating: 10.0) // returns true
 
 ```swift
 class Dog {
-
+    var name: String
+    static var count: Int = 0 
+    var breed: String
+    var mood: String
+    var hungry: Bool
+    
+    init(name: String, breed: String, mood: String, hungry: Bool){
+        self.name = name
+        self.breed = breed
+        self.mood = mood
+        self.hungry = hungry
+        Dog.count += 1 
+    }
+    
+    func playFetch() {
+        self.hungry = true
+        self.mood = "playful"
+        print("Ruff!")
+    }
+    
+    func feed() {
+        if self.hungry == true {
+            self.hungry = false
+            print("Woof!")
+        } else {
+            print("The dog doesn't look hungry")
+        }
+    }
+    
+    func toString ()  {
+       print("Name: \(name)\nBreed: \(breed)\nMood: \(mood) ")
+    }
 }
 ```
 
@@ -303,6 +334,9 @@ e. Add a type property called `count` that keeps track of how many dogs have bee
 //Ex: There have been four dogs created so far
 `Dog.count //returns 4`
 
+```
+print(Dog.count)
+```
 
 ## Question 9
 
@@ -314,8 +348,34 @@ K = C + 273
 
 a. Make a struct called `FreezingPoint` that has three static properties: `celsius`, `fahrenheit`, and `kelvin`. Give them all values equal to the freezing point of water.
 
-
+```
+struct FreezingPoint {
+    var celsius = 0.0
+    var fahrenheit = 32.0
+    var kelvin = 273.2
+}
+```
 b. Make a struct called `Celsius` that has one property: `celsius`, and two methods `getFahrenheitTemp`, and `getKelvinTemp`. Make the values of `fahrenheit` and `kelvin` correct values, converted from the `celsius` property.
+
+```
+struct Celsius {
+var celsius = 0.0
+
+func getFahrenheitTemp () {
+    var celsisusToFahrenheit = (1.8 * celsius) + 32
+    print("\(celsisusToFahrenheit)")
+}
+
+func getKelvinTemp () {
+    var celsiusToKelvin = celsius + 273
+    print("\(celsiusToKelvin)")
+}
+
+}
+```
+
+
+-----
 
 ```swift
 var tenDegreesCelsius = Celsius(celsius: 10.0)
@@ -326,12 +386,44 @@ tenDegreesCelsius.getFahrenheitTemp() //returns 50.0
 
 c. Give the `Celsius` struct a method called `isBelowFreezing` that returns a `Bool` (true if the temperature is below freezing).
 
+```
+struct Celsius {
+var celsius = 0.0
 
+func getFahrenheitTemp () {
+    var celsisusToFahrenheit = (1.8 * celsius) + 32
+    print("\(celsisusToFahrenheit)")
+}
+
+func getKelvinTemp () {
+    var celsiusToKelvin = celsius + 273
+    print("\(celsiusToKelvin)")
+}
+
+func isBelowFreezing (celsius: Double) -> Bool {
+if celsius < 0.0 {
+return true
+} else {
+    return false
+}
+}
+```
 ## Question 10
 
 Create a struct called `RGBColor` that has 3 properties, `red`, `green`, `blue` that are all of type `Double`.
 
+```
+struct RGBColor {
+    var red: Double = 0.0
+    var green: Double = 0.0
+    var blue: Double = 0.0
+}
+
+```
+
 Given the below array of color dictionaries, create an array of `RGBColor`.
+
+I'm not understanding this question.
 
 ```swift
 let colorDictArray: [[String: Double]] = [["red": 1.0, "green": 0.0, "blue": 0.0],
@@ -347,8 +439,39 @@ let colorDictArray: [[String: Double]] = [["red": 1.0, "green": 0.0, "blue": 0.0
 
 a. Create a struct called `Movie` that has properties for `name` (`String`), `year` (`Int`), `genre` (`String`), `cast` (`[String]`), and `description` (`String`). Create an instance of your `Movie` class
 
+```
+struct Movie {
+    var name: String
+    var year: Int
+    var genre: String
+    var cast: [String]
+    var description: String
+    
+}
+
+let movieOne = Movie(name: "Blah", year: 2032, genre: "classical", cast: ["Me","Fruits","Tea"], description: "i made it up as i went.")
+print(movieOne)
+```
+
 b. Create an instance method inside `Movie` called `blurb` that returns a formatted string describing the movie.
 
+
+```
+struct Movie {
+    var name: String
+    var year: Int
+    var genre: String
+    var cast: [String]
+    var description: String
+    
+    func blurb () {
+        print("\(name) was released in \(year). It was a \(genre) film starring \(cast) as a duck who played \(name) \(description) ")
+    }
+}
+
+let movieOne = Movie(name: "Blah", year: 2032, genre: "classical", cast: ["Me","Fruits","Tea"], description: "doing crazy unecessary things.")
+movieOne.blurb()
+```
 Ex: "Borat came out in 2006. It was an odd film starring Sacha Baron Cohen as a man named Borat who was visiting America from Kazakhstan."
 
 
