@@ -197,9 +197,44 @@ personTwo.fullName()
 
 a. Create a struct called `Book` that has properties `title`, `author` and `rating`, of type `String`, `String`, and `Double` respectively. Create some instances of `Book`.
 
+```
+struct Book {
+    var title: String
+    var author: String
+    var rating: Double
+    
+}
+
+let bookOne = Book(title: "Donald Trump", author: "Donald Trump", rating: 1.0)
+let bookTwo = Book(title: "The Four Agreements", author: "Don Miguel Ruiz", rating: 10.0)
+
+```
 
 b. Add a method to `Book` called `isGood` that returns `true` if its rating is greater than or equal to 7
 
+```
+struct Book {
+    var title: String
+    var author: String
+    var rating: Double
+    
+    func isGood(rating: Double) -> Bool {
+        if rating >= 7 {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+
+let bookOne = Book(title: "Donald Trump", author: "Donald Trump", rating: 1.0)
+let bookTwo = Book(title: "The Four Agreements", author: "Don Miguel Ruiz", rating: 10.0)
+
+bookOne.isGood(rating: 1.0) // returns false
+
+bookTwo.isGood(rating: 10.0) // returns true
+```
 
 ## Question 8
 
